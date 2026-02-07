@@ -1,0 +1,28 @@
+from typing import List, Dict, Optional, Any
+import json
+import time
+
+# Write the code in given function
+{{USER_CODE}}
+
+# Test Runner
+test_cases = {{TEST_CASES_JSON}}
+
+start_time = time.time()
+
+sol = Solution()
+
+for i, tc in enumerate(test_cases, 1):
+    try:
+        if "{{FUNCTION_NAME}}" == "twoSum":
+            result = sol.twoSum(tc["nums"], tc["target"])
+        else:
+            result = sol.search(tc["nums"], tc["target"])
+
+        res_str = json.dumps(result).replace(" ", "")
+        print(f"__JUDGE__ Test Case {i}: {res_str}")
+    except Exception:
+        print(f"__JUDGE__ Test Case {i}: -1")
+
+end_time = time.time()
+print(f"METRICS: TIME={(end_time - start_time) * 1000}ms")
