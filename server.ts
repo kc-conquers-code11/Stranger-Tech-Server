@@ -427,7 +427,17 @@ setInterval(async () => {
         }
     }
 }, 2000);
-
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+// --- HEALTHCHECK ENDPOINT ---
+app.get('/healthcheck', (req: express.Request, res: express.Response) => {
+    res.status(200).json({ status: 'ok', judge0_urls: JUDGE0_URLS });
 });
+
+// --- SERVER START ---
+// Render/Vercel ke liye process.env.PORT zaruri hai
+const SERVER_PORT = process.env.PORT || 3001; 
+
+app.listen(SERVER_PORT, () => {
+    console.log(`Server running on port ${SERVER_PORT}`);
+});
+
+
